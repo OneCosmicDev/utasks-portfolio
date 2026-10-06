@@ -1,0 +1,26 @@
+.dashboard {
+  background: var(--cosmic-bg-primary);
+  min-height: calc(100vh - 60px);
+  position: relative;
+}
+
+/* Gradient radial subtil */
+.dashboard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 400px;
+  background: radial-gradient(circle at 50% 0%, rgba(124, 92, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dashboard-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}

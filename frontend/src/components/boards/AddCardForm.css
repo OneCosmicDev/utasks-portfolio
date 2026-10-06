@@ -1,0 +1,117 @@
+.add-card-form {
+  background: var(--cosmic-bg-secondary);
+  border: 1px solid var(--cosmic-border-color);
+  border-radius: var(--cosmic-radius-md);
+  padding: 0.75rem;
+  box-shadow: var(--cosmic-shadow-md);
+  margin-bottom: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-input,
+.card-select {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--cosmic-border-color);
+  border-radius: var(--cosmic-radius-md);
+  font-size: var(--cosmic-font-size-sm);
+  font-family: var(--cosmic-font-body);
+  background: var(--cosmic-bg-tertiary);
+  color: var(--cosmic-text-primary);
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+  transition: all var(--cosmic-transition-base);
+}
+
+.card-input:focus,
+.card-select:focus {
+  outline: none;
+  border-color: var(--cosmic-accent-purple);
+  box-shadow: var(--cosmic-glow-purple);
+}
+
+.card-input:disabled,
+.card-select:disabled {
+  background: var(--cosmic-bg-secondary);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.card-select {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.card-input[type="date"] {
+  font-family: var(--cosmic-font-body);
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-add-card {
+  background: var(--cosmic-gradient-primary);
+  color: var(--cosmic-text-primary);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--cosmic-radius-md);
+  cursor: pointer;
+  font-size: var(--cosmic-font-size-sm);
+  font-weight: 600;
+  font-family: var(--cosmic-font-heading);
+  transition: all var(--cosmic-transition-base);
+  flex: 1;
+  box-shadow: var(--cosmic-shadow-sm);
+}
+
+.btn-add-card:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--cosmic-glow-hover), var(--cosmic-shadow-md);
+}
+
+.btn-add-card:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancel-card {
+  background: transparent;
+  border: none;
+  color: var(--cosmic-text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--cosmic-radius-sm);
+  transition: all var(--cosmic-transition-fast);
+}
+
+.btn-cancel-card:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.2) 0%, rgba(53, 227, 255, 0.2) 100%);
+  color: var(--cosmic-text-primary);
+  box-shadow: var(--cosmic-glow-purple);
+}
+
+.btn-cancel-card:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-error {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--cosmic-error);
+  padding: 0.5rem;
+  border-radius: var(--cosmic-radius-md);
+  font-size: var(--cosmic-font-size-xs);
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}

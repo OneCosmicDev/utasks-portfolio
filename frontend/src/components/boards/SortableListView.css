@@ -1,0 +1,22 @@
+.sortable-list-wrapper {
+  /* Conteneur qui reçoit le transform de @dnd-kit */
+  display: flex;
+  flex-direction: column;
+  touch-action: none; /* Améliore le drag sur mobile */
+  will-change: transform; /* Optimisation GPU pour le drag */
+}
+
+/* Pendant le drag actif, améliorer le rendu visuel */
+.sortable-list-wrapper.is-dragging {
+  z-index: 999; /* Au-dessus des autres listes */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Ombre pour donner de la profondeur */
+  transform-origin: center; /* Pivot au centre pour un mouvement naturel */
+}
+
+/* Désactiver toutes les transitions pendant le drag pour un mouvement instantané */
+.sortable-list-wrapper.is-dragging,
+.sortable-list-wrapper.is-dragging * {
+  transition: none !important;
+  pointer-events: none; /* Éviter les hover pendant le drag */
+}
+

@@ -1,0 +1,196 @@
+/* ============================================
+   UTASKS - COSMIC THEME
+   Style cosmique professionnel dark mode
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ===== COULEURS PRINCIPALES ===== */
+  --cosmic-bg-primary: #070A1A;           /* Fond principal (espace profond) */
+  --cosmic-bg-secondary: #101633;         /* Surfaces (cartes, modals) */
+  --cosmic-bg-tertiary: #1A2347;          /* Surfaces surélevées */
+  
+  /* ===== TEXTE ===== */
+  --cosmic-text-primary: #F5F7FF;         /* Texte principal (blanc cosmique) */
+  --cosmic-text-secondary: #A5B3D9;       /* Texte secondaire (gris-bleu) */
+  --cosmic-text-muted: #6B7AA1;           /* Texte discret */
+  
+  /* ===== ACCENTS ===== */
+  --cosmic-accent-purple: #7C5CFF;        /* Violet primaire */
+  --cosmic-accent-cyan: #35E3FF;          /* Cyan électrique */
+  --cosmic-accent-pink: #FF5D8F;          /* Rose néon */
+  --cosmic-accent-yellow: #FFC857;        /* Jaune doré */
+  
+  /* ===== GRADIENTS ===== */
+  --cosmic-gradient-primary: linear-gradient(135deg, #7C5CFF 0%, #35E3FF 100%);
+  --cosmic-gradient-secondary: linear-gradient(135deg, #FF5D8F 0%, #FFC857 100%);
+  --cosmic-gradient-radial: radial-gradient(circle at 50% 0%, rgba(124, 92, 255, 0.15) 0%, transparent 50%);
+  --cosmic-gradient-radial-subtle: radial-gradient(circle at 50% 50%, rgba(124, 92, 255, 0.05) 0%, transparent 70%);
+  
+  /* ===== OMBRES & GLOWS ===== */
+  --cosmic-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --cosmic-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --cosmic-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --cosmic-glow-purple: 0 0 20px rgba(124, 92, 255, 0.25);
+  --cosmic-glow-cyan: 0 0 20px rgba(53, 227, 255, 0.25);
+  --cosmic-glow-pink: 0 0 20px rgba(255, 93, 143, 0.25);
+  --cosmic-glow-hover: 0 0 30px rgba(124, 92, 255, 0.4);
+  
+  /* ===== BORDURES ===== */
+  --cosmic-border-color: rgba(165, 179, 217, 0.15);
+  --cosmic-border-hover: rgba(124, 92, 255, 0.3);
+  --cosmic-border-active: rgba(124, 92, 255, 0.5);
+  
+  /* ===== BORDER RADIUS ===== */
+  --cosmic-radius-sm: 8px;
+  --cosmic-radius-md: 12px;
+  --cosmic-radius-lg: 16px;
+  --cosmic-radius-xl: 20px;
+  
+  /* ===== TYPOGRAPHIE ===== */
+  --cosmic-font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cosmic-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --cosmic-font-size-xs: 0.75rem;         /* 12px */
+  --cosmic-font-size-sm: 0.875rem;        /* 14px */
+  --cosmic-font-size-base: 1rem;          /* 16px */
+  --cosmic-font-size-lg: 1.125rem;        /* 18px */
+  --cosmic-font-size-xl: 1.25rem;         /* 20px */
+  --cosmic-font-size-2xl: 1.5rem;         /* 24px */
+  --cosmic-font-size-3xl: 2rem;           /* 32px */
+  
+  /* ===== TRANSITIONS ===== */
+  --cosmic-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --cosmic-transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --cosmic-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ===== Z-INDEX ===== */
+  --cosmic-z-base: 1;
+  --cosmic-z-dropdown: 1000;
+  --cosmic-z-sticky: 1100;
+  --cosmic-z-modal: 1200;
+  --cosmic-z-tooltip: 1300;
+  --cosmic-z-toast: 1400;
+  
+  /* ===== PRIORITÉS (badges de cartes) ===== */
+  --priority-high-bg: rgba(255, 93, 143, 0.15);
+  --priority-high-color: #FF5D8F;
+  --priority-high-glow: 0 0 12px rgba(255, 93, 143, 0.3);
+  
+  --priority-medium-bg: rgba(255, 200, 87, 0.15);
+  --priority-medium-color: #FFC857;
+  --priority-medium-glow: 0 0 12px rgba(255, 200, 87, 0.3);
+  
+  --priority-low-bg: rgba(53, 227, 255, 0.15);
+  --priority-low-color: #35E3FF;
+  --priority-low-glow: 0 0 12px rgba(53, 227, 255, 0.3);
+  
+  /* ===== ÉTATS ===== */
+  --cosmic-success: #4ADE80;
+  --cosmic-warning: #FBBF24;
+  --cosmic-error: #EF4444;
+  --cosmic-info: #35E3FF;
+  
+  /* ===== OVERLAY ===== */
+  --cosmic-overlay: rgba(7, 10, 26, 0.8);
+  --cosmic-overlay-light: rgba(7, 10, 26, 0.6);
+}
+
+/* ===== SCROLLBAR COSMIQUE ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cosmic-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--cosmic-accent-purple) 0%, var(--cosmic-accent-cyan) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8F6FFF 0%, #4AEAFF 100%);
+  box-shadow: var(--cosmic-glow-purple);
+}
+
+/* ===== SÉLECTION DE TEXTE ===== */
+::selection {
+  background: rgba(124, 92, 255, 0.3);
+  color: var(--cosmic-text-primary);
+}
+
+::-moz-selection {
+  background: rgba(124, 92, 255, 0.3);
+  color: var(--cosmic-text-primary);
+}
+
+/* ===== FOCUS VISIBLE ===== */
+*:focus-visible {
+  outline: 2px solid var(--cosmic-accent-purple);
+  outline-offset: 2px;
+  box-shadow: var(--cosmic-glow-purple);
+}
+
+/* ===== ANIMATIONS COSMIQUES ===== */
+@keyframes cosmicPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: var(--cosmic-glow-purple);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: var(--cosmic-glow-hover);
+  }
+}
+
+@keyframes cosmicFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes cosmicShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes cosmicGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(124, 92, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(124, 92, 255, 0.4);
+  }
+}
+
+/* ===== CLASSES UTILITAIRES ===== */
+.cosmic-gradient-bg {
+  background: var(--cosmic-gradient-radial);
+}
+
+.cosmic-glow-purple {
+  box-shadow: var(--cosmic-glow-purple);
+}
+
+.cosmic-glow-cyan {
+  box-shadow: var(--cosmic-glow-cyan);
+}
+
+.cosmic-text-gradient {
+  background: var(--cosmic-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+

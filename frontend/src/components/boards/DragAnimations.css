@@ -1,0 +1,262 @@
+/* ============================================
+   ANIMATIONS DRAG & DROP - COSMIC THEME
+   ============================================ */
+
+/* Variables CSS pour faciliter le tweaking */
+:root {
+  --drag-rotation: 4deg;
+  --drag-scale: 1.05;
+  --drag-shadow-color: rgba(124, 92, 255, 0.35); /* Purple cosmique */
+  --drag-transition-duration: 200ms;
+  --drag-transition-easing: cubic-bezier(0.2, 0, 0, 1);
+  --placeholder-bg: rgba(124, 92, 255, 0.12); /* Purple glow */
+  --placeholder-border: 2px dashed rgba(124, 92, 255, 0.4);
+}
+
+/* ============================================
+   DRAG OVERLAY - Élément qui suit la souris
+   ============================================ */
+
+.drag-overlay {
+  cursor: grabbing !important;
+  transform: rotate(var(--drag-rotation)) scale(var(--drag-scale));
+  box-shadow: 0 15px 40px var(--drag-shadow-color), 
+              0 5px 20px rgba(0, 0, 0, 0.2),
+              0 0 30px rgba(124, 92, 255, 0.3); /* Glow cosmique */
+  opacity: 0.95;
+  z-index: 9999;
+  pointer-events: none;
+  animation: dragStartCosmic 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes dragStartCosmic {
+  from {
+    transform: rotate(0deg) scale(1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  to {
+    transform: rotate(var(--drag-rotation)) scale(var(--drag-scale));
+    box-shadow: 0 15px 40px var(--drag-shadow-color), 
+                0 0 30px rgba(124, 92, 255, 0.3);
+  }
+}
+
+/* Overlay spécifique pour les listes */
+.drag-overlay-list {
+  background: var(--cosmic-bg-secondary);
+  border: 1px solid var(--cosmic-accent-purple);
+  border-radius: var(--cosmic-radius-lg);
+  min-width: 320px;
+  max-width: 320px;
+}
+
+/* Overlay spécifique pour les cartes */
+.drag-overlay-card {
+  background: var(--cosmic-bg-tertiary);
+  border: 1px solid var(--cosmic-accent-cyan);
+  border-radius: var(--cosmic-radius-md);
+  min-width: 280px;
+  max-width: 280px;
+}
+
+/* ============================================
+   ÉTAT DRAGGING - Élément d'origine
+   ============================================ */
+
+/* Liste en cours de drag (l'original qui reste en place) */
+.sortable-list-wrapper.is-dragging {
+  opacity: 0.4;
+  transition: opacity 200ms ease-out;
+}
+
+/* Carte en cours de drag (l'original qui reste en place) */
+.card-item.is-dragging {
+  opacity: 0.3;
+  transition: opacity 150ms ease-out;
+}
+
+/* ============================================
+   PLACEHOLDER - Zone de drop visible
+   ============================================ */
+
+/* Placeholder pour les listes */
+.list-placeholder {
+  background: var(--placeholder-bg);
+  border: var(--placeholder-border);
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 320px;
+  min-height: 200px;
+  transition: all 300ms var(--drag-transition-easing);
+  animation: placeholderPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes placeholderPulse {
+  0%, 100% {
+    background: var(--placeholder-bg);
+    border-color: rgba(124, 92, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(124, 92, 255, 0.1);
+  }
+  50% {
+    background: rgba(124, 92, 255, 0.18);
+    border-color: rgba(124, 92, 255, 0.6);
+    box-shadow: inset 0 0 30px rgba(124, 92, 255, 0.2);
+  }
+}
+
+/* Placeholder pour les cartes */
+.card-placeholder {
+  background: var(--placeholder-bg);
+  border: var(--placeholder-border);
+  border-radius: 6px;
+  min-height: 60px;
+  margin-bottom: 0.5rem;
+  transition: all 250ms var(--drag-transition-easing);
+}
+
+/* ============================================
+   TRANSITIONS SMOOTH pour le réarrangement
+   ============================================ */
+
+/* Listes qui se déplacent quand on drag */
+.sortable-list-wrapper {
+  transition: transform 300ms var(--drag-transition-easing),
+              opacity 200ms ease-out;
+  will-change: transform;
+}
+
+/* Désactiver la transition pendant le drag actif */
+.sortable-list-wrapper.is-dragging {
+  transition: opacity 150ms ease-out;
+}
+
+/* Cartes qui se déplacent quand on drag */
+.card-item {
+  transition: transform 250ms var(--drag-transition-easing),
+              box-shadow 200ms ease-out,
+              opacity 150ms ease-out;
+  will-change: transform;
+}
+
+/* ============================================
+   DRAG HANDLE - Indicateurs de drag
+   ============================================ */
+
+.list-drag-handle,
+.card-drag-handle {
+  transition: background-color 150ms ease-out,
+              transform 150ms ease-out;
+}
+
+.list-drag-handle:hover,
+.card-drag-handle:hover {
+  transform: scale(1.1);
+}
+
+.list-drag-handle:active,
+.card-drag-handle:active {
+  transform: scale(0.95);
+}
+
+/* Indicateur visuel pendant le hover */
+.drag-indicator {
+  transition: color 150ms ease-out,
+              transform 150ms ease-out;
+}
+
+.list-drag-handle:hover .drag-indicator,
+.card-drag-handle:hover .drag-indicator {
+  color: #667eea;
+  transform: scaleX(1.2);
+}
+
+/* ============================================
+   ZONE DROPPABLE - Feedback visuel
+   ============================================ */
+
+/* Zone de drop des cartes quand on survole */
+.list-cards-droppable {
+  background: linear-gradient(180deg, transparent 0%, rgba(124, 92, 255, 0.08) 100%);
+  transition: all 250ms ease-out;
+}
+
+/* Animation quand une zone devient droppable */
+.list-cards.drop-target {
+  background: linear-gradient(180deg, transparent 0%, rgba(124, 92, 255, 0.15) 100%);
+  border-radius: var(--cosmic-radius-md);
+  animation: dropTargetPulseCosmic 800ms ease-in-out;
+}
+
+@keyframes dropTargetPulseCosmic {
+  0%, 100% {
+    background: linear-gradient(180deg, transparent 0%, rgba(124, 92, 255, 0.08) 100%);
+    box-shadow: inset 0 0 20px rgba(124, 92, 255, 0.1);
+  }
+  50% {
+    background: linear-gradient(180deg, transparent 0%, rgba(124, 92, 255, 0.18) 100%);
+    box-shadow: inset 0 0 35px rgba(124, 92, 255, 0.2);
+  }
+}
+
+/* ============================================
+   OPTIMISATIONS PERFORMANCE
+   ============================================ */
+
+/* Hardware acceleration pour les éléments draggables */
+.sortable-list-wrapper,
+.card-item {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Désactiver pointer-events pendant le drag pour éviter les glitches */
+.sortable-list-wrapper.is-dragging *,
+.card-item.is-dragging * {
+  pointer-events: none;
+}
+
+/* ============================================
+   RESPONSIVE - Ajustements mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --drag-rotation: 2deg;
+    --drag-scale: 1.03;
+  }
+  
+  .drag-overlay {
+    box-shadow: 0 10px 25px var(--drag-shadow-color);
+  }
+}
+
+/* ============================================
+   VARIANTES - Différents styles de drag
+   ============================================ */
+
+/* Style "intense" pour drag de longue durée */
+.drag-overlay.drag-intense {
+  --drag-rotation: 6deg;
+  --drag-scale: 1.08;
+  animation: dragIntense 300ms ease-out;
+}
+
+@keyframes dragIntense {
+  0% {
+    transform: rotate(var(--drag-rotation)) scale(var(--drag-scale));
+  }
+  50% {
+    transform: rotate(calc(var(--drag-rotation) * 1.2)) scale(calc(var(--drag-scale) * 1.02));
+  }
+  100% {
+    transform: rotate(var(--drag-rotation)) scale(var(--drag-scale));
+  }
+}
+
+/* Style "subtle" pour drag rapide */
+.drag-overlay.drag-subtle {
+  --drag-rotation: 2deg;
+  --drag-scale: 1.02;
+  opacity: 0.85;
+}
+

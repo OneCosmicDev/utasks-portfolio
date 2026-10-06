@@ -1,0 +1,349 @@
+.boards-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.boards-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.boards-header h2 {
+  margin: 0;
+  font-size: var(--cosmic-font-size-2xl);
+  font-family: var(--cosmic-font-heading);
+  background: var(--cosmic-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.btn-create-board {
+  background: var(--cosmic-gradient-primary);
+  color: var(--cosmic-text-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--cosmic-radius-md);
+  font-size: var(--cosmic-font-size-base);
+  font-weight: 600;
+  font-family: var(--cosmic-font-heading);
+  cursor: pointer;
+  transition: all var(--cosmic-transition-base);
+  box-shadow: var(--cosmic-shadow-md);
+}
+
+.btn-create-board:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cosmic-glow-hover), var(--cosmic-shadow-lg);
+}
+
+.boards-loading,
+.boards-error {
+  text-align: center;
+  padding: 3rem;
+  color: var(--cosmic-text-secondary);
+  font-family: var(--cosmic-font-heading);
+}
+
+.boards-error p {
+  color: var(--cosmic-error);
+  margin-bottom: 1rem;
+}
+
+.btn-retry {
+  background: var(--cosmic-gradient-primary);
+  color: var(--cosmic-text-primary);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--cosmic-radius-md);
+  cursor: pointer;
+  font-size: var(--cosmic-font-size-sm);
+  font-weight: 600;
+  font-family: var(--cosmic-font-heading);
+  transition: all var(--cosmic-transition-base);
+  box-shadow: var(--cosmic-shadow-md);
+}
+
+.btn-retry:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cosmic-glow-hover), var(--cosmic-shadow-lg);
+}
+
+.boards-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--cosmic-bg-secondary);
+  border: 1px dashed var(--cosmic-border-color);
+  border-radius: var(--cosmic-radius-lg);
+  margin-top: 2rem;
+  box-shadow: var(--cosmic-shadow-md);
+}
+
+.boards-empty p {
+  color: var(--cosmic-text-secondary);
+  font-size: var(--cosmic-font-size-lg);
+  margin: 0.5rem 0;
+  font-family: var(--cosmic-font-heading);
+}
+
+.boards-empty-hint {
+  font-size: var(--cosmic-font-size-base) !important;
+  color: var(--cosmic-text-muted) !important;
+}
+
+.boards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.board-card {
+  background: var(--cosmic-bg-secondary);
+  border: 1px solid var(--cosmic-border-color);
+  border-radius: var(--cosmic-radius-lg);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all var(--cosmic-transition-base);
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--cosmic-shadow-md);
+}
+
+.board-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--cosmic-shadow-lg), var(--cosmic-glow-purple);
+  border-color: var(--cosmic-accent-purple);
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.05) 0%, rgba(53, 227, 255, 0.05) 100%), var(--cosmic-bg-secondary);
+}
+
+.board-card.editing {
+  cursor: default;
+}
+
+.board-card-content {
+  flex: 1;
+  padding-right: 2rem;
+}
+
+.board-title {
+  margin: 0 0 0.5rem 0;
+  font-size: var(--cosmic-font-size-xl);
+  color: var(--cosmic-text-primary);
+  font-weight: 700;
+  font-family: var(--cosmic-font-heading);
+  letter-spacing: -0.02em;
+}
+
+.board-edit-form {
+  width: 100%;
+}
+
+.board-title-edit {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--cosmic-accent-purple);
+  border-radius: var(--cosmic-radius-md);
+  font-size: var(--cosmic-font-size-lg);
+  font-weight: 600;
+  color: var(--cosmic-text-primary);
+  background: var(--cosmic-bg-tertiary);
+  margin-bottom: 0.5rem;
+  font-family: var(--cosmic-font-heading);
+  box-shadow: var(--cosmic-glow-purple);
+}
+
+.board-title-edit:focus {
+  outline: none;
+  box-shadow: var(--cosmic-glow-hover);
+}
+
+.board-title-edit.error {
+  border-color: var(--cosmic-error);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.board-rename-error {
+  color: var(--cosmic-error);
+  font-size: var(--cosmic-font-size-xs);
+  margin: -0.25rem 0 0.5rem 0;
+  padding: 0.25rem;
+  font-weight: 600;
+}
+
+.board-edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-save-edit,
+.btn-cancel-edit {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--cosmic-radius-md);
+  font-size: var(--cosmic-font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cosmic-transition-base);
+  font-family: var(--cosmic-font-heading);
+}
+
+.btn-save-edit {
+  background: var(--cosmic-gradient-primary);
+  color: var(--cosmic-text-primary);
+  box-shadow: var(--cosmic-shadow-sm);
+}
+
+.btn-save-edit:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--cosmic-glow-hover), var(--cosmic-shadow-md);
+}
+
+.btn-cancel-edit {
+  background: var(--cosmic-bg-tertiary);
+  color: var(--cosmic-text-secondary);
+  border: 1px solid var(--cosmic-border-color);
+}
+
+.btn-cancel-edit:hover {
+  background: rgba(255, 93, 143, 0.1);
+  border-color: var(--cosmic-accent-pink);
+  color: var(--cosmic-text-primary);
+  box-shadow: 0 0 20px rgba(255, 93, 143, 0.2);
+}
+
+.board-description {
+  margin: 0;
+  color: var(--cosmic-text-secondary);
+  font-size: var(--cosmic-font-size-sm);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.board-menu {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.btn-board-menu {
+  background: transparent;
+  border: none;
+  color: var(--cosmic-text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--cosmic-radius-sm);
+  transition: all var(--cosmic-transition-fast);
+  font-weight: bold;
+  line-height: 1;
+  opacity: 0;
+}
+
+.board-card:hover .btn-board-menu {
+  opacity: 1;
+}
+
+.btn-board-menu:hover {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.2) 0%, rgba(53, 227, 255, 0.2) 100%);
+  color: var(--cosmic-text-primary);
+  box-shadow: var(--cosmic-glow-purple);
+}
+
+.board-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--cosmic-bg-tertiary);
+  border: 1px solid var(--cosmic-border-color);
+  border-radius: var(--cosmic-radius-md);
+  box-shadow: var(--cosmic-shadow-lg), var(--cosmic-glow-purple);
+  z-index: var(--cosmic-z-dropdown);
+  min-width: 150px;
+  margin-top: 0.5rem;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.board-menu-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--cosmic-text-primary);
+  font-size: var(--cosmic-font-size-sm);
+  transition: all var(--cosmic-transition-fast);
+  font-family: var(--cosmic-font-body);
+}
+
+.board-menu-dropdown button:hover {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.15) 0%, rgba(53, 227, 255, 0.15) 100%);
+  box-shadow: inset 0 0 20px rgba(124, 92, 255, 0.2);
+}
+
+.board-menu-dropdown button.btn-delete {
+  color: var(--cosmic-error);
+}
+
+.board-menu-dropdown button.btn-delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+  box-shadow: inset 0 0 20px rgba(239, 68, 68, 0.15);
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .boards-container {
+    padding: 1rem;
+  }
+
+  .boards-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .boards-header h2 {
+    font-size: var(--cosmic-font-size-xl);
+  }
+
+  .btn-create-board {
+    width: 100%;
+  }
+
+  .boards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .board-card {
+    min-height: 100px;
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .boards-container {
+    padding: 0.75rem;
+  }
+
+  .board-card {
+    padding: 1rem;
+  }
+}
+
