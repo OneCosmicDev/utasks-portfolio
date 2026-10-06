@@ -1,27 +1,19 @@
-# Provenance
+# Historique du projet
 
-- Dépôt pédagogique d’origine : `GLO3102/utasks-a2025-utasks-a2025-team-63`.
-- Révision source : `c16cdad68b27e7774ba369ef4f459ad395a13ee7`.
-- Copie portfolio préparée le 6 octobre 2026 à la demande de Juan José Castilla Manrique.
-- Les anciens noms Git JuanAstroDev et The_OnlyJuanDev correspondent au compte OneCosmicDev.
+## Repères chronologiques
 
-## Attribution
+J’ai commencé UTasks le **3 novembre 2025**, avec la première structure de l’application dans mon dépôt initial (`49420bd`). Le dépôt de remise `GLO3102/utasks-a2025-utasks-a2025-team-63` a ensuite été créé le **10 novembre 2025**. Je retiens la date de ma première version de l’application, plutôt que celle du dépôt de remise ou celle du matériel pédagogique fourni en août. Les dates sont présentées à l’heure du Québec.
 
-Les [contributions et crédits](CONTRIBUTIONS.md) décrivent le périmètre de Juan, les membres identifiés et le matériel fourni. L’auteur du commit initial de cette copie est responsable de sa préparation ; il ne revendique pas l’écriture de l’ensemble du code. Les auteurs du travail source conservent leurs crédits.
+## Dépôt d’origine
 
-## Adaptations pour la publication
+J’ai réalisé ce travail dans `GLO3102/utasks-a2025-utasks-a2025-team-63`. La version publique reprend la révision `c16cdad68b27e7774ba369ef4f459ad395a13ee7` du projet scolaire. Je l’ai mise en ligne sur mon compte personnel le **6 octobre 2026** pour présenter mon travail.
 
-L’historique privé n’a pas été importé. Les configurations locales d’IDE, remises et documents d’évaluation, archives binaires et anciens workflows de déploiement ne sont pas publiés. Les notices de licence et les mentions d’auteur des sources conservées sont maintenues. Les exemples de configuration n’incluent pas d’identifiants de services réels.
+Mes anciens noms Git, JuanAstroDev et The_OnlyJuanDev, correspondent à mon compte [OneCosmicDev](https://github.com/OneCosmicDev).
 
-Cette copie n’ajoute pas de licence de réutilisation au travail collectif ni au matériel pédagogique fourni.
+## Version publique
 
-## Points d’entrée dans le code
+J’ai regroupé dans ce dépôt le code utile pour comprendre et lancer le projet, mes contributions et les crédits du cours. Je conserve l’historique scolaire séparément. Les documents de remise, les configurations propres à mon environnement et les archives de déploiement ne font pas partie de cette version.
 
-- [backend/src/socket/chatSocket.ts](backend/src/socket/chatSocket.ts)
-- [backend/src/controllers/boardController.ts](backend/src/controllers/boardController.ts)
-- [frontend/src/components/chat/Chat.tsx](frontend/src/components/chat/Chat.tsx)
+Pour rendre cette version compilable avec les dépendances déclarées, j’ai ajouté les lockfiles npm, adapté deux hooks de suppression à Mongoose 9 et conservé une référence typée à l’utilisateur dans les callbacks du formulaire de connexion. Ces ajustements datent de la mise en ligne, après la remise scolaire.
 
-
-## Corrections de préparation
-
-Les lockfiles npm manquants ont été générés. Deux hooks Mongoose de suppression ont été adaptés à l’API asynchrone de Mongoose 9 (fin par résolution de la promesse). Dans le formulaire de connexion React, la valeur utilisateur validée est capturée avant les callbacks différés afin de préserver le typage TypeScript. Ces adaptations de publication sont distinctes des contributions scolaires historiques.
+Je conserve les crédits du matériel pédagogique ; cette mise en ligne n’ajoute pas de licence de réutilisation à ces éléments.
